@@ -29,9 +29,7 @@ runs:
         printf "$(pwd)\n";
         printf "${{ inputs.path }}\n";
         printf "$(ls -lha)\n";
-        printf tar --create
-          --file "/${{ steps.name.outputs.archive-name }}.tar"
-          "${{ inputs.path }}\n";
+        printf "tar --create --file /${{ steps.name.outputs.archive-name }}.tar ${{ inputs.path }}\n";
         tar --create
           --file "/${{ steps.name.outputs.archive-name }}.tar"
           "${{ inputs.path }}";
