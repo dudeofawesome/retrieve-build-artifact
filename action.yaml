@@ -15,7 +15,7 @@ runs:
   using: 'composite'
   steps:
     - name: 'Tar files 🤐'
-      run: 'tar -cvf "${{ inputs.archive-name }}" "${{ inputs.path }}"'
+      run: 'tar -c -f "${{ inputs.archive-name }}" "${{ inputs.path }}"'
       shell: 'bash'
     - name: 'Cache build 🧩'
       uses: 'actions/upload-artifact@v3'
