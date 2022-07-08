@@ -23,5 +23,5 @@ runs:
       uses: 'actions/upload-artifact@v3'
       with:
         name: '${{ inputs.archive-name }}'
-        path: '${{ steinputs.archive-name }}'
+        path: '${{ inputs.archive-name }}'
         retention-days: 1
