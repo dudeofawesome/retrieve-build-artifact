@@ -27,6 +27,7 @@ runs:
       run: >-
         printf "MY CWD IS\n";
         printf "$(pwd)\n";
+        printf "${{ inputs.path }}\n";
         printf "$(ls -lha)\n";
         tar --create
           --file "/${{ steps.name.outputs.archive-name }}.tar"
