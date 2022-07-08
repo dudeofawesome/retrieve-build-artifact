@@ -20,7 +20,7 @@ runs:
         if [ -n "${{ inputs.archive-name }}" ]; then
           echo "::set-output name=archive-name::'${{ inputs.archive-name }}'"
         else
-          echo "::set-output name=archive-name::'build-${{ github.sha }}'"
+          echo "::set-output name=archive-name::'build-${{ github.sha }}-${{ github.run_attempt }}'"
         fi
       shell: 'bash'
     - name: 'Tar files 🤐'
