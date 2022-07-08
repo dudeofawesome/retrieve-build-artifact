@@ -25,6 +25,8 @@ runs:
       shell: 'bash'
     - name: 'Tar files 🤐'
       run: >-
+        echo "MY CWD IS"
+        echo $(pwd);
         tar --create
           --file "${{ steps.name.outputs.archive-name }}"
           "${{ inputs.path }}"
