@@ -1,6 +1,6 @@
-# cache-build-artifact
+# retrieve-build-artifact
 
-Caches a tarred file or directory into a short-lived artifact for use with later jobs.
+Retrieves a tarred file or directory into a short-lived artifact for use with later jobs.
 
 ## Usage
 
@@ -10,7 +10,7 @@ jobs:
         runs-on: 'ubuntu-latest'
         steps:
             - uses: 'actions/checkout@v3'
-            - uses: 'iunu/cache-build-artifact'
+            - uses: 'iunu/retrieve-build-artifact'
               with:
                   path: './'
 ```
