@@ -1,0 +1,25 @@
+{
+  "name": "cache-build-artifact",
+  "version": "0.0.1",
+  "description": "Caches a tarred file or directory into a short-lived artifact for use with later jobs.",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/iunu/cache-build-artifact.git"
+  },
+  "keywords": [
+    "github-actions"
+  ],
+  "author": "Louis Orleans <louis@orleans.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iunu/cache-build-artifact/issues"
+  },
+  "homepage": "https://github.com/iunu/cache-build-artifact#readme",
+  "devDependencies": {
+    "@iunu-inc/code-style": "^0.0.4"
+  }
+}
