@@ -1,6 +1,6 @@
-name: 'cache-build-artifact'
+name: 'retrieve-build-artifact'
 description: >-
-  Caches a tarred file or directory into a short-lived artifact for use with
+  Retrieves a tarred file or directory into a short-lived artifact for use with
   later jobs.
 inputs:
   path:
@@ -14,12 +14,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: 'Tar files 🤐'
-      run: 'tar -c -f "${{ inputs.archive-name }}" "${{ inputs.path }}"'
-      shell: 'bash'
-    - name: 'Cache build 🧩'
-      uses: 'actions/upload-artifact@v3'
+    - name: 'Retrieve build 🧩'
+      uses: 'actions/download-artifact@v3'
       with:
         name: '${{ inputs.archive-name }}'
         path: '${{ inputs.archive-name }}'
-        retention-days: 1
+    - name: 'Un-tar files 🤐'
+      run: 'tar --extract --file "${{ inputs.archive-name }}" --directory "${{ inputs.path }}"'
+      shell: 'bash'
