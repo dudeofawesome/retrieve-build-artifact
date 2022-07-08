@@ -25,16 +25,16 @@ runs:
       shell: 'bash'
     - name: 'Tar files 🤐'
       run: >-
-        printf "MY CWD IS\n"
+        printf "MY CWD IS\n";
         printf "$(pwd)\n";
         printf "$(ls -lha)\n";
         tar --create
-          --file "${{ steps.name.outputs.archive-name }}"
+          --file "/${{ steps.name.outputs.archive-name }}.tar"
           "${{ inputs.path }}"
       shell: 'bash'
     - name: 'Cache build 🧩'
       uses: 'actions/upload-artifact@v3'
       with:
         name: '${{ steps.name.outputs.archive-name }}'
-        path: '${{ steps.name.outputs.archive-name }}'
+        path: '/${{ steps.name.outputs.archive-name }}.tar'
         retention-days: 1
