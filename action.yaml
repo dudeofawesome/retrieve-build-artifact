@@ -17,7 +17,7 @@ runs:
     - name: 'Set archive name 📇'
       id: 'name'
       run: |-
-        if [ -z "${{ inputs.archive-name }}" ]; then
+        if [ -n "${{ inputs.archive-name }}" ]; then
           echo "::set-output name=archive-name::'${{ inputs.archive-name }}'"
         else
           echo "::set-output name=archive-name::'build-${{ github.sha }}'"
