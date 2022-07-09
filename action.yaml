@@ -10,15 +10,27 @@ inputs:
   archive-name:
     description: 'The name of the archive'
     required: true
-    default: 'build-${{ env.GITHUB_SHA }}'
+    default: ''
 runs:
   using: 'composite'
   steps:
+    - name: 'Set archive name 📇'
+      id: 'name'
+      run: |-
+        if [ -n "${{ inputs.archive-name }}" ]; then
+          echo "::set-output name=archive-name::${{ inputs.archive-name }}"
+        else
+          echo "::set-output name=archive-name::build-${{ github.sha }}-${{ github.run_attempt || 0 }}"
+        fi
+      shell: 'bash'
     - name: 'Retrieve build 🧩'
       uses: 'actions/download-artifact@v3'
       with:
         name: '${{ inputs.archive-name }}'
-        path: '${{ inputs.archive-name }}'
+        path: '/${{ inputs.archive-name }}.tar'
     - name: 'Un-tar files 🤐'
-      run: 'tar --extract --file "${{ inputs.archive-name }}" --directory "${{ inputs.path }}"'
+      run: >-
+        tar --extract \
+        --file "/${{ steps.name.outputs.archive-name }}.tar" \
+        --directory "${{ inputs.path }}"
       shell: 'bash'

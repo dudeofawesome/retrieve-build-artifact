@@ -33,7 +33,12 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules/
+/node_modules/*
+!/node_modules/
+!/node_modules/@iunu-inc/
+/node_modules/@iunu-inc/eslint-config/
+/node_modules/@iunu-inc/code-style/*
+!/node_modules/@iunu-inc/code-style/.editorconfig
 
 # TypeScript cache
 *.tsbuildinfo
