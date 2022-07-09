@@ -27,10 +27,12 @@ runs:
       uses: 'actions/download-artifact@v3'
       with:
         name: '${{ steps.name.outputs.archive-name }}'
-        path: '/tmp/${{ steps.name.outputs.archive-name }}.tar'
-    - name: 'Un-tar files 🤐'
+        path: '/tmp/${{ steps.name.outputs.archive-name }}.zip'
+    - name: 'Un-ziptar files 🤐'
       run: >-
+        unzip "/tmp/${{ steps.name.outputs.archive-name }}.zip" \
+          -d "/tmp/";
         tar --extract \
         --file "/tmp/${{ steps.name.outputs.archive-name }}.tar" \
-        --directory "${{ inputs.path }}"
+        --directory "${{ inputs.path }}";
       shell: 'bash'
