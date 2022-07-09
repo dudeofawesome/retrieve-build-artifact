@@ -30,12 +30,13 @@ runs:
         name: '${{ steps.name.outputs.archive-name }}'
         path: '/tmp/${{ steps.name.outputs.archive-name }}.zip'
     - name: 'Un-ziptar files 🤐'
-      run: >-
+      run: |-
         tarfile=$( \
-          unzip -Z -1 "${{ steps.download-artifact.outputs.download-path }}" \
+          unzip -Z -1 \
+            "${{ steps.download-artifact.outputs.download-path }}" \
             -d "/tmp/" \
         );
         tar --extract \
-        --file "$tarfile" \
-        --directory "${{ inputs.path }}";
+          --file "$tarfile" \
+          --directory "${{ inputs.path }}";
       shell: 'bash'
