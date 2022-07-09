@@ -26,11 +26,11 @@ runs:
     - name: 'Retrieve build 🧩'
       uses: 'actions/download-artifact@v3'
       with:
-        name: '${{ inputs.archive-name }}'
-        path: '/${{ inputs.archive-name }}.tar'
+        name: '${{ steps.name.outputs.archive-name }}'
+        path: '/tmp/${{ steps.name.outputs.archive-name }}.tar'
     - name: 'Un-tar files 🤐'
       run: >-
         tar --extract \
-        --file "/${{ steps.name.outputs.archive-name }}.tar" \
+        --file "/tmp/${{ steps.name.outputs.archive-name }}.tar" \
         --directory "${{ inputs.path }}"
       shell: 'bash'
