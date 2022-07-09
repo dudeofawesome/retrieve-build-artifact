@@ -31,6 +31,7 @@ runs:
         path: '/tmp/${{ steps.name.outputs.archive-name }}.zip'
     - name: 'Un-ziptar files 🤐'
       run: |-
+        ls -lha "/tmp/";
         ls -lha "${{ steps.download-artifact.outputs.download-path }}";
         tarfile=$( \
           unzip -Z -1 \
