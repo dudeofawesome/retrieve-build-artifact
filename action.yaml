@@ -32,9 +32,7 @@ runs:
         printf "tar --create
           --file /${{ steps.name.outputs.archive-name }}.tar
           ${{ inputs.path }}\n";
-        tar --create
-          --file "/${{ steps.name.outputs.archive-name }}.tar"
-          "${{ inputs.path }}";
+        tar --create --file "/${{ steps.name.outputs.archive-name }}.tar" "${{ inputs.path }}";
       shell: 'bash'
     - name: 'Cache build 🧩'
       uses: 'actions/upload-artifact@v3'
