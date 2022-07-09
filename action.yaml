@@ -24,15 +24,18 @@ runs:
         fi
       shell: 'bash'
     - name: 'Retrieve build 🧩'
+      id: 'download-artifact'
       uses: 'actions/download-artifact@v3'
       with:
         name: '${{ steps.name.outputs.archive-name }}'
         path: '/tmp/${{ steps.name.outputs.archive-name }}.zip'
     - name: 'Un-ziptar files 🤐'
       run: >-
-        unzip "/tmp/${{ steps.name.outputs.archive-name }}.zip" \
-          -d "/tmp/";
+        tarfile=$( \
+          unzip -Z -1 "${{ steps.download-artifact.outputs.download-path }}" \
+            -d "/tmp/" \
+        );
         tar --extract \
-        --file "/tmp/${{ steps.name.outputs.archive-name }}.tar" \
+        --file "$tarfile" \
         --directory "${{ inputs.path }}";
       shell: 'bash'
