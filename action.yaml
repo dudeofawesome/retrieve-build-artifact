@@ -26,12 +26,12 @@ runs:
     - name: 'Tar files 🤐'
       run: >-
         tar --create \
-          --file "/${{ steps.name.outputs.archive-name }}.tar" \
+          --file "/tmp/${{ steps.name.outputs.archive-name }}.tar" \
           "${{ inputs.path }}";
       shell: 'bash'
     - name: 'Cache build 🧩'
       uses: 'actions/upload-artifact@v3'
       with:
         name: '${{ steps.name.outputs.archive-name }}'
-        path: '/${{ steps.name.outputs.archive-name }}.tar'
+        path: '/tmp/${{ steps.name.outputs.archive-name }}.tar'
         retention-days: 1
