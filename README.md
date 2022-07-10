@@ -10,9 +10,8 @@ jobs:
         runs-on: 'ubuntu-latest'
         steps:
             - uses: 'actions/checkout@v3'
-            - uses: 'iunu/cache-build-artifact'
-              with:
-                  path: './'
+            - run: 'touch "empty.txt"'
+            - uses: 'iunu/cache-build-artifact@v1'
 ```
 
 ## Inputs
