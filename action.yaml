@@ -28,21 +28,10 @@ runs:
       uses: 'actions/download-artifact@v3'
       with:
         name: '${{ steps.name.outputs.archive-name }}'
-        path: '/tmp/${{ steps.name.outputs.archive-name }}.zip'
+        path: '/tmp/${{ steps.name.outputs.archive-name }}'
     - name: 'Un-ziptar files 🤐'
       run: |-
-        which ls;
-        ls --help;
-        ls --version;
-        ls -v;
-        ls -lha "/tmp/";
-        ls -lha "${{ steps.download-artifact.outputs.download-path }}";
-        tarfile=$( \
-          unzip -Z -1 \
-            "${{ steps.download-artifact.outputs.download-path }}" \
-            -d "/tmp/" \
-        );
         tar --extract \
-          --file "$tarfile" \
+          --file "${{ steps.download-artifact.outputs.download-path }}/${{ steps.name.outputs.archive-name }}" \
           --directory "${{ inputs.path }}";
       shell: 'bash'
