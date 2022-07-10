@@ -10,9 +10,7 @@ jobs:
         runs-on: 'ubuntu-latest'
         steps:
             - uses: 'actions/checkout@v3'
-            - uses: 'iunu/retrieve-build-artifact'
-              with:
-                  path: './'
+            - uses: 'iunu/retrieve-build-artifact@v1'
 ```
 
 ## Inputs
