@@ -18,17 +18,17 @@ runs:
       id: 'name'
       run: |-
         if [ -n "${{ inputs.archive-name }}" ]; then
-          echo "::set-output name=archive-name::${{ inputs.archive-name }}"
+          echo "archive_name=${{ inputs.archive-name }}" >> "$GITHUB_OUTPUT"
         else
-          echo "::set-output name=archive-name::build-${{ github.sha }}"
+          echo "archive_name=build-${{ github.sha }}" >> "$GITHUB_OUTPUT"
         fi
       shell: 'bash'
     - name: 'Retrieve build 🧩'
       id: 'download-artifact'
       uses: 'actions/download-artifact@v3'
       with:
-        name: '${{ steps.name.outputs.archive-name }}'
-        path: '/tmp/${{ steps.name.outputs.archive-name }}'
+        name: '${{ steps.name.outputs.archive_name }}'
+        path: '/tmp/${{ steps.name.outputs.archive_name }}'
     - name: 'Un-ziptar files 🤐'
       run: |-
         mkdir -p "${{ inputs.path }}";
