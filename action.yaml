@@ -31,7 +31,8 @@ runs:
         path: '/tmp/${{ steps.name.outputs.archive-name }}'
     - name: 'Un-ziptar files 🤐'
       run: |-
+        mkdir -p "${{ inputs.path }}";
         tar --extract \
-          --file "${{ steps.download-artifact.outputs.download-path }}/${{ steps.name.outputs.archive-name }}.tar" \
+          --file "${{ steps.download-artifact.outputs.download-path }}" \
           --directory "${{ inputs.path }}";
       shell: 'bash'
