@@ -1,10 +1,9 @@
 name: 'retrieve-build-artifact'
 description: >-
-  Retrieves a tarred file or directory into a short-lived artifact for use with
-  later jobs.
+  Retrieves a tarred file or directory from a short-lived artifact.
 inputs:
   path:
-    description: 'Path of file or files to archive'
+    description: 'Path to unarchive of file or files in to'
     required: true
     default: './'
   archive-name:
