@@ -1,6 +1,6 @@
 {
   "name": "retrieve-build-artifact",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Retrieves a tarred file or directory into a short-lived artifact for use with later jobs.",
   "main": "index.js",
   "scripts": {
